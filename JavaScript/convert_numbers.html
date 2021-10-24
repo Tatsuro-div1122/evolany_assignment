@@ -1,0 +1,42 @@
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<title>Convert numbers to currency</title>
+		<style>
+			#output {
+				color:red;
+				font-style: bold;
+				font-size: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>3. Convert numbers to currency</h1>
+		<input type="number" id="input">
+		<button onclick="change()">convert</button>
+		<p id="output"></p>
+		<script>
+			// To start changing number
+			function change(){
+				let input = document.getElementById("input").value;
+				let currency = convert(input);
+				document.getElementById("output").textContent = currency;
+			}
+			
+			// To convert number into US currency
+			function convert(num){
+				const formatter = new Intl.NumberFormat('us-EN', {
+					style: 'currency',
+					currency: 'USD'
+				});
+				let currency = orgFloor(num, 100);
+				return formatter.format(currency);
+			}
+
+			// To round down a number
+			function orgFloor(value, base) {
+				return Math.floor(value * base) / base;
+			}
+		</script>
+	</body>
+</html>

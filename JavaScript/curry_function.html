@@ -1,0 +1,49 @@
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>Curry function</title>
+    </head>
+    <body>
+        <h1>6. Curry function</h1>
+        <script>
+            /* -------------------
+                output
+            --------------------*/
+            // create curry function
+            let add = curry(sum);
+
+            // Check output on Console
+            console.log(add(1)(1)(1));
+
+            /* -------------------
+                functions
+            --------------------*/
+            function curry(func) {
+                return function curried(...args) {
+                    if (args.length >= func.length) {
+                        return func.apply(this, args);
+                    } else {
+                        return function(...args2) {
+                            return curried.apply(this, args.concat(args2));
+                        }
+                    }
+                };
+            }
+
+            // Didn't work...
+            // function sum(...args){
+            // args.reduce((previous, current) => {
+            //     return previous + current;
+            // });
+            // }
+
+            // define sum
+            function sum(a, b, c){
+                return a + b + c
+            }
+
+        </script>
+    </body>
+</html>
+
+

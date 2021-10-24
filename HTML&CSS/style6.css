@@ -1,0 +1,48 @@
+.grid > * {
+  counter-increment: cells;
+}
+
+.grid > *::before {
+  content: counter(cells);
+}
+
+span {
+  line-height: 80px;
+  background-color: salmon;
+}
+
+.grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(180px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-auto-rows: 80px;
+  grid-gap: 5px 5px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+.row-span {
+  grid-column: span 2;
+}
+
+.col-span {
+  grid-row: span 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.row-span.col-span {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+/*# sourceMappingURL=style6.css.map */

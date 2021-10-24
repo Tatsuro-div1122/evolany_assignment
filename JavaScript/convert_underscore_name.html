@@ -1,0 +1,28 @@
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<title>Convert underscore naming</title>
+		<style>
+			#output {
+				color:red;
+				font-style: bold;
+				font-size: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>1. Convert underscore naming convention into camel</h1>
+		<input id="input">
+		<button onclick="convert()">convert</button>
+		<p id="output"></p>
+		<script>
+			function convert(){
+				let input = document.getElementById("input").value;
+				const rex = /_./g;
+				let convert = input.replace(rex, function(input) {return input.charAt(1).toUpperCase()});
+				document.getElementById("output").textContent = convert;
+			}
+		</script>
+	</body>
+</html>
+

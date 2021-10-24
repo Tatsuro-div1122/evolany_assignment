@@ -1,0 +1,31 @@
+*{
+    margin:0;
+    padding: 0;
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+span {
+    font-family: serif;
+    font-size: 30px;
+}
+span::before {
+    content: attr(data-initial)"";
+	border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    border: solid 1px navy;
+    text-align:center;
+    line-height: 70px;
+    margin-right: 5px;
+    font-size: 30px;
+    color: navy;
+    padding: 20px;
+}

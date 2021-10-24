@@ -1,0 +1,33 @@
+*{
+    margin:0;
+    padding: 0;
+  }
+
+header, footer {
+	background-color: salmon;
+    height: 75px;
+    position: fixed;
+    width: 100vw;
+}
+
+footer {
+    bottom: 0px;
+    width: 100vw;
+}
+
+main {
+	background-color: steelblue;
+    overflow: scroll;
+}
+
+// write your css here
+
+.wrapper {
+    position: reletive;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 60px;
+    box-sizing: border-box
+}
+
+

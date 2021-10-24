@@ -1,0 +1,72 @@
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>Merge objects by key</title>
+    </head>
+    <body>
+        <h1>5. Merge objects by key</h1>
+
+        <script>
+            /* -------------------
+                input
+            --------------------*/
+            const obj1 = {
+                foo: [1, 2],
+                bar: [3],
+                baz: [4],
+            }
+
+            const obj2 = {
+                foo: [5],
+                baz: [6, 7],
+                bam: [8],
+            }
+
+            /* -------------------
+                output
+            --------------------*/
+            const k1 = Object.keys(obj1);
+            const k2 = Object.keys(obj2);
+            const keyArr = k1.concat(k2);
+
+            const keys =removeDuplicatesOf(keyArr);
+
+            const result = merge(keys, obj1, obj2);
+
+            // Check output on console
+            console.log(result);
+
+            /* -------------------
+                functions
+            --------------------*/
+
+            function removeDuplicatesOf(array){
+                var arr = array.concat();
+                for(var i=0; i<arr.length; ++i) {
+                    for(var j=i+1; j<arr.length; ++j) {
+                        if(arr[i] === arr[j]) {
+                            arr.splice(j, 1);
+                        }
+                    }
+                }
+                return arr;
+            }
+
+            // To merge array based on keys
+            function merge(keys, ...arrays) {
+                const ret = {};
+                keys.forEach(k => {
+                    ret[k] = []
+                    arrays.forEach(arr => {
+                        if (k in arr) {
+                            ret[k] = ret[k].concat(arr[k])
+                        }
+                    })
+                })
+                return ret;
+            }
+        </script>
+    </body>
+</html>
+
+

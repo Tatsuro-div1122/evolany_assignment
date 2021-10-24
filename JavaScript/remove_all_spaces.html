@@ -1,0 +1,40 @@
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>Remove all spaces</title>
+  </head>
+  <body>
+    <h1>2. Remove all spaces in a string and reverse it</h1>
+    <input id="input">
+    <button onclick="convert()">convert</button>
+    <p id="output"></p>
+  </body>
+</html>
+
+<script>
+	function convert(){
+		const input = document.getElementById("input").value;
+    let remove = removeSpaceOf(input);
+    let convert = reverse(remove);
+		document.getElementById("output").textContent = convert;
+	}
+  
+  function removeSpaceOf(str) {
+    const rex = /(\s|　)/g;
+    return remove = str.replace(rex, "");
+  }
+
+  function reverse(str) {
+    return reverse = str.match(/./ug).reverse().join("");
+  }
+
+</script>
+
+<style>
+  #output {
+    color:red;
+    font-style: bold;
+    font-size: 30px;
+  }
+
+</style>

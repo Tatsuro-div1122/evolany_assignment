@@ -1,0 +1,72 @@
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<title>Count and say</title>
+		<style>
+			#output {
+				color:red;
+				font-style: bold;
+				font-size: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>4. Count and say</h1>
+		<input id="input">
+		<button onclick="countAndSay()">convert</button>
+		<button onclick="decode()">decode</button>
+		<p id="output"></p>
+	</body>
+
+	<script>
+		function countAndSay(){
+			let input = document.getElementById("input").value;
+			// To convert strings into array
+			let txtArr = Array.from(input);
+	
+			let ret = "";
+	
+			// To set a counting number
+			let counter = 1;
+	
+			// To check and count consecutive alphabets
+			for(let i=0; i<txtArr.length; i++){
+				if(txtArr[i] === txtArr[i+1]) {
+					counter++
+				}else if(txtArr[i] !== txtArr[i+1]) {
+					ret += counter + txtArr[i];
+					counter = resetCount(counter);
+				}
+			}
+			document.getElementById("output").textContent = ret;
+		}
+	
+		function decode(){
+			let input = document.getElementById("input").value;
+			// To convert string into array
+			let txtArr = Array.from(input);
+	
+			// To set a return
+			let ret = "";
+	
+			let num = "";
+			// To create consecutive strings from number and alphabet
+			for(let i=0; i<txtArr.length; i++){
+				if(isNaN(txtArr[i])) {
+					ret += txtArr[i].repeat(num);
+					num = resetCount(num);
+				}else {
+					num += ""+txtArr[i];
+				}
+			}
+	
+			// To return the string
+			document.getElementById("output").textContent = ret;
+		}
+
+		function resetCount(num) {
+			return typeof num === "number" ? 1 : '';
+		}
+	</script>
+</html>
+
